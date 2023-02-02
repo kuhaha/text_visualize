@@ -24,9 +24,15 @@ def create_parser(worker='janome', parts_of_speech=['名詞'], stop_words=[]):
     def _mecab(text):
         """ mecab parser
         """
+        # Local ipadic @ Windows
         # tagger = MeCab.Tagger()
-        # /usr/local/lib/mecab/dic/mecab-ipadic-neologd/
+
+        # mecab-ipadic-neologd @ MacOS or Linux       
         tagger = MeCab.Tagger('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
+
+        # mecab-ipadic-neologd @ Google Colabo
+        # tagger = MeCab.Tagger('-r/dev/null -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd')
+        
         tagger.parse('')
         
         node = tagger.parseToNode(text)
