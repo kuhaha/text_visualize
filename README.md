@@ -1,7 +1,13 @@
 # text_visualize: 単語出現頻度の可視化
 ## word_wakati.py
-`word_seq(text, part_of_speec=['名詞',stopwords=[])`
-- 日本語文字列textに対しJanomeで形態素解析を行う
+`create_parser(worker, parts_of_speech=['名詞'],stopwords=[])`
+- parserを構築して返す。
+- `worker` *str*: パーサー種別　`'janome'` or `'mecab'`
+- `parts_of_speech` *[str]*:解析結果に含まれる品詞
+- `stopwords` *[str]*: 解析結果に含まれない不要語
+
+`word_seq(text, parser=None)`
+- 日本語文字列textに対し`parser`を使って形態素解析を行う
 - 指定品詞を抽出
 - 不要語、記号を削除
 - 上記で得られた単語をリストで返す
